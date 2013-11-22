@@ -1,0 +1,27 @@
+                                                                     
+                                                                     
+                                                                     
+                                             
+﻿Jaki będzie efekt działania poniższego kodu ?
+int i = 0, j = 0;
+
+if (++i == j++)
+   Log.i(TAG, "True i = " + i + ", j = " + j + "");
+else
+   Log.i(TAG, "False i = " + i + ", j = " + j + "");:a:True i = 0, j = 1;:f:True i = 1, j = 0;:f:False i = 1, j = 1;:t:False i = 1, j = 0;:f:$
+Które z 2 wyrażeń importu pozwalają na zaimportowanie klasy HashMap ?:a:import java.util.HashMap;:t:import java.util.*;:t:import java.util.HashMap.*;:f:import java.utils.*;:f:$
+Który z poniższych podanych pakietów zawiera strukturę kolekcji Java (ArrayList, HashMap ...) ?:a:java.io:f:java.net:f:java.util:t:java.utils:f:$
+Które z podanych dwóch wywołań metody opakowywującej ByteBuffer jest nieprawidłowa ?
+byte[] buffer = new byte[]{0x1, 0x2, 0x3, 0x4};:a:int r = ByteBuffer(buffer, 0, 4).getInt();:f:int r = ByteBuffer(buffer, 4, 0).getInt();:t:int r = ByteBuffer(buffer).getInt();:f:int r = ByteBuffer(buffer).getInt(1);:t:$
+Które z wyrażeń poprawnie deklarują zmienną typu boolean ?:a:Boolean isValid = true;:t:boolean isValid = TRUE;:f:boolean isValid = new Boolean(true);:t:boolean isValid = 1;:f:$
+Dany jest poniżej kod.
+public class TestRownosci {
+   public static void main(String[] args) {
+      Integer a = new Integer("123");
+      Integer b = new Integer("123");
+      Object obj1 = new Object();
+      Object obj2 = new Object();
+      Object obj3 = a;
+   }
+}
+Które z podanych wyrażeń jest prawdziwe ?:a:a.equals(b);:t:a.equals(obj1);:f:a.equals(obj3);:t:obj1.equals(obj2);:f:$
