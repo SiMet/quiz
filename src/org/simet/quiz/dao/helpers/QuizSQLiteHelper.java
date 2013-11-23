@@ -17,8 +17,8 @@ public class QuizSQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database) {
         Log.w(this.getClass().getName(), "Create new database");
-        AnswerSQLite.onCreate(database);
         QuestionSQLite.onCreate(database);
+        AnswerSQLite.onCreate(database);
 
     }
 
