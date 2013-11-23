@@ -1,7 +1,14 @@
 package org.simet.quiz.model;
 
-public class Answer {
+import java.io.Serializable;
 
+public class Answer implements Serializable{
+
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
     public Answer(String content, Boolean proper) {
         this.content = content;

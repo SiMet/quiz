@@ -1,9 +1,16 @@
 package org.simet.quiz.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Question {
+public class Question implements Serializable{
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 9021304367068187177L;
+    
+    
     private long id;
     private String content;
     private List<Answer> answers;

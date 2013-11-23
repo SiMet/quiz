@@ -1,4 +1,4 @@
-package org.simet.quiz.activities;
+package org.simet.quiz.view.dialog;
 
 import android.app.ProgressDialog;
 import android.content.Context;

@@ -3,5 +3,7 @@
 
     <string name="app_name">Quiz</string>
     <string name="button_start_text">Start</string>
-
+    <string name="question">Question</string>
+    <string name="processing">Processing...</string>
+    <string name="please_wait">Please wait.</string>
 </resources>

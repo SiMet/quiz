@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import org.simet.quiz.activities.ProgressObserver;
 import org.simet.quiz.dao.QuestionDataSource;
 import org.simet.quiz.model.Question;
 import org.simet.quiz.model.factory.QuestionFactory;
+import org.simet.quiz.view.dialog.ProgressObserver;
 
 import android.app.Activity;
 import android.content.res.AssetManager;
