@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import org.simet.quiz.activities.ProgressObserver;
+import org.simet.quiz.dao.QuestionDataSource;
 import org.simet.quiz.model.Question;
 import org.simet.quiz.model.factory.QuestionFactory;
 
@@ -87,7 +88,7 @@ public class DBInitializer {
                 try {
                     is = openFile();
                 } catch (IOException e1) {
-                    Log.wtf("quiz", "Problem with open file with questions");
+                    Log.wtf(this.getClass().getName(), "Problem with open file with questions");
                     return;
                 }
 
@@ -96,12 +97,19 @@ public class DBInitializer {
                 setMaxOperations(questions.size());
 
                 QuestionFactory qf = new QuestionFactory();
-                for (int i = 0; i < questions.size(); ++i) {
-                    Question question = qf.createQuestion(questions.get(i));
-                    processedOperationChanged(i);
+                QuestionDataSource questionDataSource = new QuestionDataSource(DBInitializer.this.parent);
+                try{
+                    questionDataSource.open();
+                    for (int i = 0; i < questions.size(); ++i) {
+                        Question question = qf.createQuestion(questions.get(i));
+                        questionDataSource.createQuestion(question);
+                        processedOperationChanged(i);
+                    }
+                }finally{
+                    questionDataSource.close();
+                    processedFinished();
                 }
-                processedFinished();
-                Log.i("quiz", "Parsing finished");
+                Log.i(this.getClass().getName(), "Parsing finished");
             }
 
         }).start();

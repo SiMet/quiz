@@ -28,7 +28,7 @@ public class StartActivity extends Activity {
         startButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Log.d("quiz","Start clicked");
+				Log.d(this.getClass().getName(),"Start clicked");
 			}
 		});
     }    

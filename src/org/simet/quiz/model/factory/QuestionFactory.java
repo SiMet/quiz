@@ -13,7 +13,7 @@ public class QuestionFactory {
     public Question createQuestion(String string) {
         String[] splits = string.split(":a:");
         if (splits.length != 2) {
-            Log.wtf("quiz", "Error during parse question: " + string);
+            Log.wtf(this.getClass().getName(), "Error during parse question: " + string);
         }
         String content = splits[0];
         String answersString = splits[1];
