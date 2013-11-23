@@ -6,4 +6,12 @@
     <string name="question">Question</string>
     <string name="processing">Processing...</string>
     <string name="please_wait">Please wait.</string>
+    <string name="confirm_button">Confirm</string>
+    <string name="correct">Correct</string>
+    <string name="ok">Ok</string>
+    <string name="ask_finish_quiz">Do you want finish quiz?</string>
+    <string name="alert_finish_quiz_title">Confirm</string>
+    <string name="correctly">Correct</string>
+    <string name="incorrectly">Incorrect</string>
+    <string name="your_result">Your result</string>
 </resources>

@@ -14,6 +14,7 @@ public class QuestionFactory {
         String[] splits = string.split(":a:");
         if (splits.length != 2) {
             Log.wtf(this.getClass().getName(), "Error during parse question: " + string);
+            throw new IllegalArgumentException("Error during parse question");
         }
         String content = splits[0];
         String answersString = splits[1];
