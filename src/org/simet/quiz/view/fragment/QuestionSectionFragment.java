@@ -43,11 +43,16 @@ public class QuestionSectionFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        this.question = (Question) getArguments().getSerializable(QUESTION);
+    }
+    
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         RelativeLayout rootView = (RelativeLayout) inflater.inflate(R.layout.question, container, false);
         LinearLayout layout = (LinearLayout) rootView.findViewById(R.id.question_linear_layout);
         TextView questionTextView = (TextView) layout.findViewById(R.id.question_label);
-        this.question = (Question) getArguments().getSerializable(QUESTION);
         questionTextView.setText(question.getContent());
         
         this.confirmButton = (Button) rootView.findViewById(R.id.confirm_button);
