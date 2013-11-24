@@ -1,6 +1,7 @@
 package org.simet.quiz.view.fragment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.simet.quiz.R;
@@ -30,14 +31,14 @@ public class QuestionSectionFragment extends Fragment {
 
     private Context context;
     private Question question;
-    private List<CheckBox> checkboxes;
+    private HashMap<CheckBox,Answer> checkboxes;
     private Button confirmButton;
     private QuestionSectionDelegate delegate;
     
     public QuestionSectionFragment(Context context,QuestionSectionDelegate delegate) {
         this.context = context;
         this.delegate = delegate;
-        this.checkboxes = new ArrayList<CheckBox>();
+        this.checkboxes = new HashMap<CheckBox,Answer>();
         
     }
 
@@ -53,25 +54,21 @@ public class QuestionSectionFragment extends Fragment {
         confirmButton.setOnClickListener(new ConfirmOnClickListener());
         
         for(int i=0;i<question.getAnswers().size();++i){
+            Answer answer = question.getAnswers().get(i);
             CheckBox checkbox = new CheckBox(context);
-            checkbox.setText(question.getAnswers().get(i).getContent());
+            checkbox.setText(answer.getContent());
             checkbox.setId(i);
             checkbox.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT));
             layout.addView(checkbox);
-            checkboxes.add(checkbox);
+            checkboxes.put(checkbox,answer);
         }
         return rootView;
     }
     private List<Answer> getSelectedAnswers(){
         List<Answer> answers = new ArrayList<Answer>();
-        for(CheckBox checkbox : this.checkboxes){
+        for(CheckBox checkbox : this.checkboxes.keySet()){
             if(checkbox.isChecked()){
-                for(Answer answer : question.getAnswers()){
-                    if(checkbox.getText().equals(answer.getContent())){
-                        answers.add(answer);
-                        break;
-                    }
-                }
+                answers.add(this.checkboxes.get(checkbox));
             }
         }
         return answers;
@@ -83,7 +80,7 @@ public class QuestionSectionFragment extends Fragment {
         @Override
         public void onClick(View v) {
             self.delegate.QuestionConfirmed(self.question, self.getSelectedAnswers());
-            for(CheckBox checkbox : self.checkboxes){
+            for(CheckBox checkbox : self.checkboxes.keySet()){
                 checkbox.setEnabled(false);
             }
             self.confirmButton.setText(getString(R.string.correct));
@@ -97,7 +94,7 @@ public class QuestionSectionFragment extends Fragment {
         @Override
         public void onClick(View v) {
             self.delegate.QuestionCorrected(self.question);
-            for(CheckBox checkbox : self.checkboxes){
+            for(CheckBox checkbox : self.checkboxes.keySet()){
                 checkbox.setEnabled(true);
             }
             self.confirmButton.setText(getString(R.string.confirm_button));
